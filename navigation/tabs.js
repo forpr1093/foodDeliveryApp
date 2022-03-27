@@ -12,7 +12,17 @@ const Tab = createBottomTabNavigator();
 const Tabs = () => {
   return (
     // hiding the label of navigation bar with tabBarShowLabel, hiding header with headerShown
-    <Tab.Navigator screenOptions={{headerShown: false, tabBarShowLabel: false}}>
+    // use tabBarStyle for navigation bar styling
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          borderTopWidth: 0,
+          backgroundColor: 'transparent',
+          elevation: 0,
+        },
+      }}>
       <Tab.Screen
         name="Home"
         component={Home}
