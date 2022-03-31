@@ -462,7 +462,7 @@ const Home = () => {
   }
   function renderRestaurantList() {
     const renderItem = ({item}) => (
-      <TouchableOpacity style={{marginBottom: SIZES.padding * 2}}>
+      <TouchableOpacity style={{marginBottom: SIZES.padding * 2}} onPress={() => navigation.navigate("Restaurant", {item, currentLocation})}>
         <View style={{paddingBottom: SIZES.padding}}>
           <Image
             source={item.photo}
