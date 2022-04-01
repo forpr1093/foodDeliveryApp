@@ -224,7 +224,29 @@ const Restaurant = ({route, navigation}) => {
     );
   }
   function renderOrder() {
-    return <View>{renderDots()}</View>;
+    return (
+      <View>
+        {renderDots()}
+        <View
+          style={{
+            backgroundColor: COLORS.white,
+            borderTopLeftRadius: 40,
+            borderTopRightRadius: 40,
+          }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingVertical: SIZES.padding * 2,
+              paddingHorizontal: SIZES.padding * 3,
+              borderBottomColor: COLORS.lightGray2,
+              borderBottomWidth: 1,
+            }}>
+              <Text style={{...FONTS.}}>Item in Cart</Text>
+            </View>
+        </View>
+      </View>
+    );
   }
 
   return (
