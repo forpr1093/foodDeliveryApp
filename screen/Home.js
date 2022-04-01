@@ -10,7 +10,7 @@ import {
 import {FlatList} from 'react-native-gesture-handler';
 import {icons, images, FONTS, SIZES, COLORS} from '../constants';
 
-const Home = () => {
+const Home = ({navigation}) => {
   // Dummy Datas
 
   const initialCurrentLocation = {
@@ -462,7 +462,12 @@ const Home = () => {
   }
   function renderRestaurantList() {
     const renderItem = ({item}) => (
-      <TouchableOpacity style={{marginBottom: SIZES.padding * 2}} onPress={() => navigation.navigate("Restaurant", {item, currentLocation})}>
+      <TouchableOpacity
+        style={{marginBottom: SIZES.padding * 2}}
+        // navigate to the Restaurant screen by passing two parameters (item and currentLocation)
+        onPress={() =>
+          navigation.navigate("Restaurant", {item, currentLocation})
+        }>
         <View style={{paddingBottom: SIZES.padding}}>
           <Image
             source={item.photo}
@@ -504,7 +509,9 @@ const Home = () => {
             {item.categories.map(categoryId => {
               return (
                 <View style={{flexDirection: 'row'}} key={categoryId}>
-                  <Text style={{...FONTS.body3}}>{getCategoryNameById(categoryId)} <Text> | </Text></Text>
+                  <Text style={{...FONTS.body3}}>
+                    {getCategoryNameById(categoryId)} <Text> | </Text>
+                  </Text>
                 </View>
               );
             })}
@@ -512,8 +519,16 @@ const Home = () => {
             {/* price */}
             {
               // there are 3 types of price in dummy data
-              [1,2,3].map((priceRating) => (
-                <Text key={priceRating} style={{...FONTS.body3, color: priceRating <= item.priceRating ? COLORS.black : COLORS.darkgray}}>
+              [1, 2, 3].map(priceRating => (
+                <Text
+                  key={priceRating}
+                  style={{
+                    ...FONTS.body3,
+                    color:
+                      priceRating <= item.priceRating
+                        ? COLORS.black
+                        : COLORS.darkgray,
+                  }}>
                   $
                 </Text>
               ))
